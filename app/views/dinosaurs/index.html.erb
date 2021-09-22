@@ -1,11 +1,22 @@
-<div class="container">
-  <h1>Hello</h1>
-  <% @dinos.each do |dino| %>
-    <p><%= dino.name %></p>
-  <% end %>
-  <div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="dino-container m-5">
+  <div>
+    <h1 class ='text-center pt-3'>Welcome to Paleo-map</h1>
+    <h2 class ='text-center p-3'>Select a category of dinosaure on the left and check on the map where they were found!</h2>
   </div>
-</div>
+  <div class="row">
+    <div class="col-12 col-md-4 col-lg-4" data-controller="dino-marker">
+      <% @dinos.each do |dino| %>
+        <%# <%= link_to  '', data:{id: dino.id, action: 'mouseover->dino-marker#hover mouseout->dino-marker#hoverOut'} do %> %>
+          <%= render 'dinocard', dino: dino %>
+          <%# <% end %> %>
+        <% end %>
+      </div>
+      <div class="col-12 col-md-8 col-lg-8">
+        <div id="map"
+              style="width: 100%; height: 800px;"
+              data-markers="<%= @markers.to_json %>"
+              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
+  </div>
