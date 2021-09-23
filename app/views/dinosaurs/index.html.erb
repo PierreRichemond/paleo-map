@@ -3,17 +3,18 @@
     <h1 class ='text-center pt-3'>Welcome to Paleo-map</h1>
     <h2 class ='text-center p-3'>Select a category of dinosaurs and check on the map where they were found!</h2>
   </div>
-  <%= simple_form_for :TAGS do |f| %>
+  <%= simple_form_for :TAGS, { url: tagged_path } do |f| %>
     <%= f.input :tag,
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'tag-wrapper',
             item_wrapper_class: 'tag-item',
-            input_html: {class: 'tag-selector'} %>
+            input_html: {class: 'tag-selector'},
+            collection: Snippet::TAGS %>
   <% end %>
   <div class="activity-tag">
     <div>
-      <%= link_to 'All', tagged_path(tab: tag), class: "btn btn-primary tag-btn all-tag-btn" %>
+      <%= link_to 'All', dinosaurs_path, class: "btn btn-primary tag-btn all-tag-btn" %>
       <% ActsAsTaggableOn::Tag.all.each do |tag| %>
         <%= link_to tag, tagged_path(tag: tag), class: "btn btn-primary tag-btn" %>
       <% end %>

@@ -32,11 +32,12 @@ CSV.foreach(filepath0, csv_options) do |row|
 end
 
 Dinosaur.all.each do |dino|
-  dino.tag_list = 'Tyrannosaure' if dino.name.include?('Tyrann')
-  dino.tag_list = 'Diplodocus' if dino.name.include?('Diplodocus')
-  dino.tag_list = 'Ankylosaurus' if dino.name.include?('Ankylosaurus')
-  dino.tag_list = 'Dilophosaurus' if dino.name.include?('Dilophosaurus')
-  dino.tag_list = 'Gorgosaurus' if dino.name.include?('Gorgosaurus')
+  dino.tag_list.add('Tyrannosaure') if dino.name.include?('Tyrann')
+  dino.tag_list.add('Diplodocus') if dino.name.include?('Diplodocus')
+  dino.tag_list.add('Ankylosaurus') if dino.name.include?('Ankylosaurus')
+  dino.tag_list.add('Dilophosaurus') if dino.name.include?('Dilophosaurus')
+  dino.tag_list.add('Gorgosaurus') if dino.name.include?('Gorgosaurus')
+  dino.save
 end
 
 
