@@ -23,15 +23,16 @@ gem 'jbuilder', '~> 2.7'
 gem 'geocoder'
 gem 'cloudinary', '~> 1.16.0'
 gem 'nokogiri', '>= 1.8.5'
+gem 'simple_form'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'acts-as-taggable-on', '~> 7.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
-gem 'simple_form'
 
 group :development, :test do
   gem 'pry-byebug'
