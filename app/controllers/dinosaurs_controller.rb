@@ -1,17 +1,16 @@
 class DinosaursController < ApplicationController
   before_action :set_dinosaurs, only: [:show, :edit, :update, :destroy]
-  before_action :tagged, only: [:show]
+
 
   def index
-    @dinos = Dinosaur.all
+    @dinos = if params[:tag].present?
+      Dinosaur.tagged_with(params[:tag])
+    else
+      []
+    end
     map_geocode
   end
 
-  def show
-    @dino = Dinosaur.find(params[:dinosaur_id])
-    tagged
-    map_geocode
-  end
 
 private
 
@@ -33,11 +32,5 @@ private
     end
   end
 
-  def tagged
-    if params[:tag].present?
-      @dinos = Dinosaur.tagged_with(params[:tag])
-    else
-      @dinos = Dinosaur.all
-    end
-  end
+
 end

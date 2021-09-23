@@ -32,11 +32,9 @@ CSV.foreach(filepath0, csv_options) do |row|
 end
 
 Dinosaur.all.each do |dino|
-  dino.tag_list.add('Tyrannosaure') if dino.name.include?('Tyrann')
-  dino.tag_list.add('Diplodocus') if dino.name.include?('Diplodocus')
-  dino.tag_list.add('Ankylosaurus') if dino.name.include?('Ankylosaurus')
-  dino.tag_list.add('Dilophosaurus') if dino.name.include?('Dilophosaurus')
-  dino.tag_list.add('Gorgosaurus') if dino.name.include?('Gorgosaurus')
+  Dinosaur::TAGS.each do |tag|
+    dino.tag_list.add(tag) if dino.name.include?(tag.first(5))
+  end
   dino.save
 end
 
