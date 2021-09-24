@@ -9,7 +9,9 @@ class DinosaursController < ApplicationController
       []
     end
     map_geocode
-    @dino = Dinosaur.tagged_with(params[:tag]).first
+    @dino = Dinosaur.tagged_with(params[:tag]).find { |d| d.photo.present? }
+    @count = Dinosaur.tagged_with(params[:tag]).all.count
+    @tag = params[:tag]
   end
 
 

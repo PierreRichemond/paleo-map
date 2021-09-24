@@ -1,5 +1,5 @@
 <% @dinos.each do |dino| %>
   <% if dino.photo.attached? %>
-    <%= image_tag dino.photo.key, style: "width: 100%;" %>
+    <%= image_tag dino.photo, style: "width: 100%;" %>
   <% end %>
 <% end %>

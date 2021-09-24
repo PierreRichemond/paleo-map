@@ -9,7 +9,8 @@
         <%= link_to tag, dinosaurs_path(tag: tag), class: "btn btn-primary tag-btn" %>
       <% end %>
       <% if @dino.present? %>
-        <%= image_tag(@dino.photo.key, style: "width: 100%;") %>
+        <%= image_tag(@dino.photo, style: "width: 100%;") %>
+        <h3><%= @count %> <%= @tag %> were found.</h3>
       <% end %>
     </div>
     <div class="col-12 col-md-8 col-lg-8">
