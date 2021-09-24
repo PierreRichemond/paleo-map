@@ -3,13 +3,16 @@
     <h1 class ='text-center pt-3'>Welcome to Paleo-map</h1>
     <h2 class ='text-center p-3'>Select a category of dinosaurs and check on the map where they were found!</h2>
   </div>
-  <div class="activity-tag">
+  <div class="dino-tag">
     <div>
       <% Dinosaur::TAGS.each do |tag| %>
         <%= link_to tag, dinosaurs_path(tag: tag), class: "btn btn-primary tag-btn" %>
       <% end %>
     </div>
   </div>
+  <% if @dino.present? %>
+    <%= image_tag(@dino.photo.key, style: "width: 100%;") %>
+  <% end %>
   <div id="map"
               style="width: 100%; height: 800px;"
               data-markers="<%= @markers.to_json %>"

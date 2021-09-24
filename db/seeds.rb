@@ -1,4 +1,4 @@
-
+require "open-uri";
 require 'csv'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -31,6 +31,37 @@ CSV.foreach(filepath0, csv_options) do |row|
   puts "#{Dinosaur.count} dinosaurs were created."
 end
 
+
+
+# CSV.foreach(filepath1, csv_options) do |row|
+#   Dinosaur.create!(
+#       name: row[9],
+#       longitude: row[17],
+#       latitude: row[18]
+#     )
+#   puts "#{Dinosaur.count} diplodocuses were created."
+# end
+
+# CSV.foreach(filepath2, csv_options) do |row|
+#   Dinosaur.create!(
+#       name: row[9],
+#       longitude: row[17],
+#       latitude: row[18]
+#     )
+#   puts "#{Dinosaur.count} stegosauruses were created."
+# end
+
+# CSV.foreach(filepath3, csv_options) do |row|
+#   Dinosaur.create!(
+#       name: row[9],
+#       longitude: row[17],
+#       latitude: row[18]
+#     )
+#   puts "#{Dinosaur.count} Tyrannosauruses were created."
+# end
+
+puts "#{Dinosaur.count} dinosaurs were created."
+
 Dinosaur.all.each do |dino|
   Dinosaur::TAGS.each do |tag|
     dino.tag_list.add(tag) if dino.name.include?(tag.first(5))
@@ -39,31 +70,11 @@ Dinosaur.all.each do |dino|
 end
 
 
-# CSV.foreach(filepath1, csv_options) do |row|
-#   Dinosaur.create!(
-#     name: row[9],
-#     longitude: row[17],
-#     latitude: row[18]
-#   )
-#   puts "#{Dinosaur.count} diplodocuses were created."
-# end
-
-# CSV.foreach(filepath2, csv_options) do |row|
-#   Dinosaur.create!(
-#     name: row[9],
-#     longitude: row[17],
-#     latitude: row[18]
-#   )
-#   puts "#{Dinosaur.count} stegosauruses were created."
-# end
-
-# CSV.foreach(filepath3, csv_options) do |row|
-#   Dinosaur.create!(
-#     name: row[9],
-#     longitude: row[17],
-#     latitude: row[18]
-#   )
-#   puts "#{Dinosaur.count} Tyrannosauruses were created."
-# end
-
-puts "#{Dinosaur.count} dinosaurs were created."
+tags = ["Dromaeosaurus", "Ankylosaurus", "Dilophosaurus", "Gorgosaurus" ]
+tags.each do |tag|
+  dinos = Dinosaur.tagged_with(tag)
+  if dinos.present?
+  dinos.first.photo.attach(io: File.open(Rails.root.join("app/assets/images/#{tag}.jpeg")),
+                  filename: "#{tag}.jpeg")
+  end
+end

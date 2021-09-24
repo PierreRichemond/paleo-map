@@ -9,6 +9,7 @@ class DinosaursController < ApplicationController
       []
     end
     map_geocode
+    @dino = @dinos.first
   end
 
 

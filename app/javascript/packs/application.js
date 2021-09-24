@@ -27,8 +27,10 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 });
 
+import { activeBtn } from '../plugins/buttons_tags.js'
 import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
+  activeBtn();
 })
