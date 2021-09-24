@@ -69,12 +69,28 @@ Dinosaur.all.each do |dino|
   dino.save
 end
 
+# Dinosaur::TAGS.each do |tag|
+#   dinos = Dinosaur.tagged_with(tag)
+#   if dinos.present?
+#   dinos.first.photo.attach(io: File.open(Rails.root.join("app/assets/images/#{tag}.jpeg")),
+#                   filename: "#{tag}.jpeg")
+#   end
+# end
 
-tags = ["Dromaeosaurus", "Ankylosaurus", "Dilophosaurus", "Gorgosaurus" ]
-tags.each do |tag|
-  dinos = Dinosaur.tagged_with(tag)
+Dinosaur::TAGS.each do |tag|
+  dinos = Dinosaur.tagged_with(tag).first
   if dinos.present?
-  dinos.first.photo.attach(io: File.open(Rails.root.join("app/assets/images/#{tag}.jpeg")),
-                  filename: "#{tag}.jpeg")
+    dinos.first.photo.attach(io: File.open(File.join(Rails.root,"app/assets/images/#{tag}.jpeg")),
+                        filename: "#{tag}.jpeg")
   end
 end
+
+# Dinosaur::TAGS.each do |tag|
+#   url = URI.open("https://res.cloudinary.com/hco3zesos/image/upload/v1632472948/#{tag}.jpg")
+#   dinos = Dinosaur.tagged_with(tag)
+#   if dinos.present?
+#     dinos.first.photo.attach(io: url,
+#                              filename: "#{tag}.jpg",
+#                              content_type: 'image/png')
+#   end
+# end

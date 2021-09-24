@@ -9,7 +9,7 @@ class DinosaursController < ApplicationController
       []
     end
     map_geocode
-    @dino = @dinos.first
+    @dino = Dinosaur.tagged_with(params[:tag]).first
   end
 
 

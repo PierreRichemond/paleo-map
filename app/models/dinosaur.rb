@@ -1,6 +1,7 @@
 class Dinosaur < ApplicationRecord
-  TAGS = ["Dromaeosaurus", "Oviraptoridae", "Sinraptor", "Larus", "Velociraptor", "Struthio", "Megalosaurus", "Albertosaurus", "Ichthyornis", "Allosaurus", "Gigantosaurus", "Ornithopsis", "Brontosaurus", "Titanosaurus", "Tyrannosaurus", "Morosaurus", "Draconyx", "Triceratops", "Psittacosaurus", "Styracosaurus", "Hadrosaurinae", "Nodosaurus", "Camptosaurus", "Tithonian", "Pachycephalosaurus", "Iguanodon", "Stegosaurus", "Diplodocus", "Ankylosaurus", "Dilophosaurus", "Gorgosaurus" ]
-
   has_one_attached :photo
-  acts_as_taggable_on :tags # or whatever you would like to call your tag list.
+  acts_as_taggable_on :tags
+
+  dino_list = ["Dromaeosaurus", "Carnotaurus", "Oviraptor", "Sinraptor", "Velociraptor", "Megalosaurus", "Albertosaurus", "Ichthyornis", "Allosaurus", "Gigantosaurus", "Ornithopsis", "Brachiosaurus", "Tyrannosaurus", "Camarasaurus", "Triceratops", "Psittacosaurus", "Styracosaurus", "Magnapaulia", "Nodosaurus", "Camptosaurus", "Pachycephalosaurus", "Iguanodon", "Stegosaurus", "Diplodocus", "Ankylosaurus", "Dilophosaurus", "Gorgosaurus", "Parasaur", "Spinosaurus" ]
+  TAGS = dino_list.sort
 end
