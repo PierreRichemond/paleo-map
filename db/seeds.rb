@@ -69,13 +69,13 @@ Dinosaur.all.each do |dino|
   dino.save
 end
 
-puts "#{tag} tagged"
+puts "dinos tagged"
 
 Dinosaur::TAGS.each do |tag|
   dinos = Dinosaur.tagged_with(tag)
   if dinos.present?
-  dinos.first.photo.attach(io: File.open(Rails.root.join("app/assets/images/#{tag}.jpeg")),
-                  filename: "#{tag}.jpeg")
+  dinos.first.photo.attach(io: File.open("app/assets/images/#{tag}.jpeg"),
+                           filename: "#{tag}.jpeg")
   puts "photo to #{tag} added."
   end
 end
