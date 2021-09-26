@@ -64,7 +64,7 @@ puts "#{Dinosaur.count} dinosaurs were created."
 
 Dinosaur.all.each do |dino|
   Dinosaur::TAGS.each do |tag|
-    dino.tag_list.add(tag) if dino.name.include?(tag.first(5))
+    dino.tag_list.add(tag) if dino.name.include?(tag.first(8))
   end
   dino.save
 end
