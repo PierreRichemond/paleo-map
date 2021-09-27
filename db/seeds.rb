@@ -34,30 +34,42 @@ filepath3 = 'db/Tyrannosauruses.csv'
 
 
 CSV.foreach(filepath1, csv_options) do |row|
-  Dinosaur.create!(
-      name: row[9],
-      longitude: row[17],
-      latitude: row[18]
-    )
-  puts "#{Dinosaur.count} diplodocuses were created."
+  Dinosaur::TAGS.each do |tag|
+    if row[9].include?(tag.first(8))
+      Dinosaur.create!(
+          name: row[9],
+          longitude: row[17],
+          latitude: row[18]
+        )
+      puts "#{Dinosaur.count} diplodocuses were created."
+    end
+  end
 end
 
 CSV.foreach(filepath2, csv_options) do |row|
-  Dinosaur.create!(
-      name: row[9],
-      longitude: row[17],
-      latitude: row[18]
-    )
-  puts "#{Dinosaur.count} stegosauruses were created."
+  Dinosaur::TAGS.each do |tag|
+    if row[9].include?(tag.first(8))
+      Dinosaur.create!(
+          name: row[9],
+          longitude: row[17],
+          latitude: row[18]
+        )
+      puts "#{Dinosaur.count} stegosauruses were created."
+    end
+  end
 end
 
 CSV.foreach(filepath3, csv_options) do |row|
-  Dinosaur.create!(
-      name: row[9],
-      longitude: row[17],
-      latitude: row[18]
-    )
-  puts "#{Dinosaur.count} Tyrannosauruses were created."
+  Dinosaur::TAGS.each do |tag|
+    if row[9].include?(tag.first(8))
+      Dinosaur.create!(
+          name: row[9],
+          longitude: row[17],
+          latitude: row[18]
+        )
+      puts "#{Dinosaur.count} Tyrannosauruses were created."
+    end
+  end
 end
 
 puts "#{Dinosaur.count} dinosaurs were created."
