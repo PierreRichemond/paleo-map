@@ -6,7 +6,7 @@ class DinosaursController < ApplicationController
     @dinos = if params[:tag].present?
       Dinosaur.tagged_with(params[:tag])
     else
-      []
+      Dinosaur.all.shuffle.first(800)
     end
     map_geocode
     @dino = Dinosaur.tagged_with(params[:tag]).find { |d| d.photo.present? }
