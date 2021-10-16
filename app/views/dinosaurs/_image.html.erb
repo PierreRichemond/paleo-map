@@ -1,0 +1,5 @@
+<% if @dino.present? %>
+  <%= image_tag(@dino.photo, style: "width: 100%;", class: "image") %>
+<% else %>
+  <%= image_tag("Albertosaurus.jpeg", style: "width: 100%;", class: "image") %>
+<% end %>
