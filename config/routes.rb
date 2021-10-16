@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get '/tagged', to: "dinosaurs#tagged", as: :tagged
   resources :dinosaurs
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # get '/testing', to: "dinosaurs#testing"
 end

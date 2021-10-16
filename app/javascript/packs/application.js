@@ -7,6 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "controllers"
 
 Rails.start()
 Turbolinks.start()
@@ -34,3 +35,10 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   activeBtn();
 })
+
+// const tags = document.querySelector(".tags").querySelectorAll("a")
+// const name = []
+// const tag = tags.forEach((tag)=>{
+//   name.push(`dinosaurs?tag=${tag.id}`)
+// })
+// console.log(name)
