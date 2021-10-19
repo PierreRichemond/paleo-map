@@ -17,7 +17,8 @@ class DinosaursController < ApplicationController
       format.html
       format.json do
         render json: { image: Rails.application.routes.url_helpers.rails_blob_url(@dino.photo, only_path: true),
-                      json_markers: @markers }
+                      json_markers: @markers,
+                      tag: @tag }
       end
     end
   end

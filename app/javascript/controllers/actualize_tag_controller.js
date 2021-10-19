@@ -1,19 +1,14 @@
 import { Controller } from "stimulus";
+import { initMapbox } from "../plugins/init_mapbox";
 
 export default class extends Controller {
-  static targets = ['tags', 'map'];
+  static targets = [];
 
 
   send(event) {
     // console.log(imageTarget);
     event.preventDefault();
     const href = event.target.href
-    console.log(href)
-    console.log(this.mapTarget)
-    console.log(this.imageTarget)
-    const markers = this.mapTarget.getAttribute('data-markers');
-    const image = document.querySelector(".image")
-    console.log(image)
 
 
       fetch(href, {
@@ -22,10 +17,16 @@ export default class extends Controller {
       })
         .then(response => response.json())
         .then((data) => {
-          console.log(data)
-
-          this.imageTarget.outerHTML = data.image;
-          this.markers.outerHTML = data.json_markers;
+          const activeTags = document.querySelectorAll('.active-btn')
+          activeTags.forEach(otherTag => {
+            otherTag.classList.remove("active-btn")
+          })
+          const tag = document.getElementById(`tag-${data.tag}`)
+          tag.classList.add("active-btn")
+          // debugger
+          document.getElementById('image').setAttribute('src', data.image)
+          document.getElementById('map').setAttribute('data-markers', JSON.stringify(data.json_markers))
+          initMapbox();
         });
 
 }

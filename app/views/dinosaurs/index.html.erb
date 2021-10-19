@@ -2,9 +2,9 @@
 <div class="dino-container m-2">
   <div data-controller="actualize-tag">
     <div class="row">
-      <div class="col-12 col-md-4 col-lg-4 tags" data-actualize-tag-target="tags">
+      <div class="col-12 col-md-4 col-lg-4 tags">
         <% Dinosaur::TAGS.each do |tag| %>
-          <%= link_to tag, dinosaurs_path(tag: tag), class: "btn btn-primary tag-btn", id:"tag-#{tag}",
+          <%= link_to tag, dinosaurs_path(tag: tag), class: "button ", id:"tag-#{tag}",
                       data: {
                       actualize_tag_target: "tag-#{tag}",
                       action: 'click->actualize-tag#send'
