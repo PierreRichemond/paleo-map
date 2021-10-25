@@ -8,15 +8,17 @@ export default class extends Controller {
   send(event) {
     // console.log(imageTarget);
     event.preventDefault();
-    const href = event.target.href
+
+    const url = event.target.href
 
 
-      fetch(href, {
+      fetch(url, {
         method: 'GET',
         headers: { 'Accept': "application/json", 'Content-Type': 'application/json' }
       })
         .then(response => response.json())
         .then((data) => {
+          console.log(data)
           const activeTags = document.querySelectorAll('.active-btn')
           activeTags.forEach(otherTag => {
             otherTag.classList.remove("active-btn")
@@ -25,6 +27,8 @@ export default class extends Controller {
           tag.classList.add("active-btn")
           // debugger
           document.getElementById('image').setAttribute('src', data.image)
+          console.log(document.getElementById('image'))
+
           document.getElementById('map').setAttribute('data-markers', JSON.stringify(data.json_markers))
           initMapbox();
         });

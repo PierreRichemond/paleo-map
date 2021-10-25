@@ -6,7 +6,6 @@
         <% Dinosaur::TAGS.each do |tag| %>
           <%= link_to tag, dinosaurs_path(tag: tag), class: "button ", id:"tag-#{tag}",
                       data: {
-                      actualize_tag_target: "tag-#{tag}",
                       action: 'click->actualize-tag#send'
                     }%>
         <% end %>

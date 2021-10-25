@@ -1,5 +1,6 @@
 <% if @dino.present? %>
   <%= image_tag(@dino.photo, style: "width: 100%;", id: "image") %>
 <% else %>
-  <%= image_tag("Albertosaurus.jpeg", style: "width: 100%;", id: "image") %>
+  <% dino = @dinos.find { |d| d.photo.present? }  %>
+  <%= image_tag(dino.photo, style: "width: 100%;", id: "image") %>
 <% end %>
