@@ -1,13 +1,12 @@
 class DinosaursController < ApplicationController
   before_action :set_dinosaurs, only: [:show, :edit, :update, :destroy]
 
-
   def index
-    @dinos =  if params[:tag].present?
-                Dinosaur.tagged_with(params[:tag])
-              else
-                Dinosaur.all.sample(800)
-              end
+    @dinos = if params[:tag].present?
+               Dinosaur.tagged_with(params[:tag])
+             else
+               Dinosaur.all.sample(800)
+             end
     map_geocode
     @dino = Dinosaur.tagged_with(params[:tag]).find { |d| d.photo.present? }
     @count = Dinosaur.tagged_with(params[:tag]).all.count
@@ -23,9 +22,7 @@ class DinosaursController < ApplicationController
     end
   end
 
-
-
-private
+  private
 
   def set_dinosaurs
     @dinosaur = Dinosaur.find(params[:id])

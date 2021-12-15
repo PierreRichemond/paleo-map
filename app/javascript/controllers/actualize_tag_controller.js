@@ -8,30 +8,27 @@ export default class extends Controller {
   send(event) {
     // console.log(imageTarget);
     event.preventDefault();
-
     const url = event.target.href
 
-
-      fetch(url, {
-        method: 'GET',
-        headers: { 'Accept': "application/json", 'Content-Type': 'application/json' }
+    fetch(url, {
+      method: 'GET',
+      headers: { 'Accept': "application/json", 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data)
+      const activeTags = document.querySelectorAll('.active-btn')
+      activeTags.forEach(otherTag => {
+        otherTag.classList.remove("active-btn")
       })
-        .then(response => response.json())
-        .then((data) => {
-          console.log(data)
-          const activeTags = document.querySelectorAll('.active-btn')
-          activeTags.forEach(otherTag => {
-            otherTag.classList.remove("active-btn")
-          })
-          const tag = document.getElementById(`tag-${data.tag}`)
-          tag.classList.add("active-btn")
-          // debugger
-          document.getElementById('image').setAttribute('src', data.image)
-          console.log(document.getElementById('image'))
+      const tag = document.getElementById(`tag-${data.tag}`)
+      tag.classList.add("active-btn")
+      // debugger
+      document.getElementById('image').setAttribute('src', data.image)
+      console.log(document.getElementById('image'))
 
-          document.getElementById('map').setAttribute('data-markers', JSON.stringify(data.json_markers))
-          initMapbox();
-        });
-
-}
+      document.getElementById('map').setAttribute('data-markers', JSON.stringify(data.json_markers))
+      initMapbox();
+    });
+  }
 }
