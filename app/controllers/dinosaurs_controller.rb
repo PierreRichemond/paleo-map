@@ -17,7 +17,7 @@ class DinosaursController < ApplicationController
       format.json do
         render json: { image: Rails.application.routes.url_helpers.rails_blob_url(@dino.photo, only_path: true),
                       json_markers: @markers,
-                      tag: @tag }
+                      tag: @tag}
       end
     end
   end
@@ -37,7 +37,7 @@ class DinosaursController < ApplicationController
       {
         lat: dino.latitude,
         lng: dino.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { dino: dino })
+        info_window: render_to_string(partial: "info_window.html.erb", locals: { dino: dino })
       }
     end
   end
