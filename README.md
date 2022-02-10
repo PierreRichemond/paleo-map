@@ -1,6 +1,6 @@
 # Paleo map
 
-A platform to search dinosaur's location using an API-database. Change the tag to where each dinosaur used to live.
+A platform to search dinosaur's locations using an API-database. Change the tag to where each dinosaur used to live.
 <br>
 Feel free to have a look check where your favorite dinosaur used to live!
 
